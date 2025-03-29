@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Компания туралы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Delius+Swash+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 40px;
+        padding-right: 40px;
+        background: whitesmoke;
+        font-family: "Cormorant Infant", serif;
+      }
+      .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+      }
+      .container2 {
+        display: flex;
+        gap: 10px;
+      }
+      .search {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+      }
+      .arrow {
+        width: 30px;
+        height: 30px;
+      }
+      .signIn {
+        padding: 10px 15px;
+        background: #4c6797;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 110px;
+        height: 40px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+      }
+      .container1 {
+        display: flex;
+        align-items: center;
+      }
+      .container1 {
+        color: #4c6797;
+      }
+      .lang {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+      }
+      #buttonLg {
+        width: 70px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+      }
+      #lang-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #lang-list li {
+        padding: 10px;
+        cursor: pointer;
+      }
+      #lang-list li:hover {
+        background: #f0f0f0;
+      }
+      .hidden {
+        display: none;
+      }
+      .navHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        font-family: "Cormorant Infant", serif;
+      }
+      .navHeader a {
+        color: #4c6797;
+        text-decoration: none;
+        font-size: 20px;
+        transition: 0.7s;
+      }
+      .navHeader a:hover {
+        text-decoration: underline;
+        scale: 1.1;
+        background: whitesmoke;
+        border-radius: 8px;
+        padding: 7px;
+      }
+      .aboutUs {
+        background: whitesmoke;
+        padding: 7px;
+        border-radius: 8px;
+        margin: 3px;
+      }
+      .containerDIV {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .divImage img {
+        width: 500px;
+        height: 600px;
+        margin: 20px;
+        border: #4c6797 solid 2px;
+      }
+      main {
+        background: rgba(255, 255, 255, 0.817);
+      }
+      .divInform h1 {
+        width: 500px;
+        height: 600px;
+        margin: 20px;
+        border: #4c6797 solid 2px;
+        padding: 20px;
+        box-shadow: 10px 5px 5px #4c6797b1;
+        font-style: italic;
+        font-size: 25px;
+        color: #4c6797c8;
+      }
+      .MolecuLab {
+        color: #4c6797;
+        font-size: 35px;
+      }
+      .missia {
+        margin: 100px;
+        text-align: center;
+        font-family: "Cormorant Infant", serif;
+      }
+      .missia h1 {
+        font-size: 50px;
+        color: #4c6797;
+      }
+      .missia h3 {
+        font-size: 40px;
+        font-weight: 200;
+        color: #4c6797bc;
+      }
+      .ereksheliktery {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      .erek {
+        border: #4c6797 solid 1px;
+        width: 400px;
+        height: 400px;
+        padding: 20px;
+        margin: 20px;
+        font-size: 20px;
+        box-shadow: 0 4px 6px rgba(37, 54, 177, 0.712);
+      }
+      .erekkk {
+        color: #4c6797;
+        text-align: center;
+        font-size: 40px;
+      }
+      footer {
+        background: #4c6797;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px;
+        color: whitesmoke;
+        font-family: "Cormorant Infant", serif;
+      }
+      .social {
+        display: flex;
+        flex-direction: row;
+        margin-left: 90px;
+        margin-top: 20px;
+      }
+      .footerInformation a {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: rgb(245, 245, 245);
+        font-size: 25px;
+        padding: 7px;
+        transition: 0.8s;
+      }
+      .footerInformation a:hover {
+        scale: 1.1;
+        color: rgb(229, 229, 229);
+      }
+      .footerInformation h3 {
+        font-size: 25px;
+        padding: 15px;
+      }
+      .footerInformation h1 {
+        font-size: 40px;
+        color: rgb(201, 201, 201);
+      }
+      .kunsayun {
+        font-style: italic;
+        color: rgb(201, 201, 201);
+      }
+      .footerInformation img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container1">
+        <a href="./index.html"
+          ><img class="logo" src="../images/logo.png" alt=""
+        /></a>
+        <h1>MolecuLab</h1>
+      </div>
+
+      <div class="container2">
+        <div class="lang">
+          <button id="buttonLg">
+            <span id="selected-lang">KZ</span>
+            <img class="arrow" src="../images/arrow.png" alt="" />
+          </button>
+          <ul id="lang-list" class="hidden">
+            <li onclick="language('RU')">RU</li>
+            <li onclick="language('KZ')">KZ</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <nav class="navHeader">
+      <a href="video.html">Видеосабақтар</a>
+      <a href="book.html">Кітаптар</a>
+      <a href="test.html">Тесттер</a>
+      <a class="aboutUs" href="aboutComp.html">Компания туралы</a>
+      <a href="nuska.html">Нұсқа талдау</a>
+    </nav>
+
+    <main>
+      <div class="containerDIV">
+        <div class="divImage">
+          <img
+            src="https://i.pinimg.com/736x/83/df/dc/83dfdc29a25376eb786313870631ef3f.jpg"
+            alt=""
+          />
+        </div>
+
+        <div class="divInform">
+          <h1>
+            <span class="MolecuLab">MolecuLab</span> – бұл химия және биология
+            пәндері бойынша Ұлттық бірыңғай тестілеуге (ҰБТ) дайындалуға
+            арналған заманауи әрі тегін білім беру платформасы. Сонымен қатар,
+            біз оқушыларға математикалық сауаттылық, оқу сауаттылығы және
+            Қазақстан тарихы пәндерінен қосымша дайындық сабақтарын ұсынамыз.
+            Біздің мақсатымыз – оқушылардың білім деңгейін арттырып, олардың
+            армандаған жоғары оқу орындарына түсуіне көмектесу
+          </h1>
+        </div>
+      </div>
+
+      <div class="missia">
+        <h1>Біздің миссиямыз</h1>
+        <h3>
+          MolecuLab-тың басты мақсаты – оқушыларға сапалы әрі қолжетімді білім
+          беру арқылы олардың болашағына жарқын жол ашу. Біз әрбір талапкердің
+          өз мүмкіндігін толық жүзеге асырып, өзіне сенімді болуына
+          көмектесеміз. Біздің платформада ұсынылатын оқу материалдары ҰБТ
+          талаптарына сай жасақталған, ал оқыту әдістері оқушылардың білімін
+          тиімді әрі терең меңгеруіне бағытталған.
+        </h3>
+      </div>
+      <div>
+        <h1 class="erekkk">MolecuLab-тың негізгі ерекшеліктері</h1>
+        <div class="ereksheliktery">
+          <div class="erek">
+            <h3>
+              🔹 Тәжірибелі оқытушылар – Біздің команда өз саласында білікті,
+              жоғары нәтижелерге жеткен мамандардан құралған. Олар оқушыларға
+              күрделі тақырыптарды қарапайым әрі түсінікті тілде түсіндіреді.
+            </h3>
+          </div>
+          <div class="erek">
+            <h3>
+              🔹 Жүйелі және тиімді оқу бағдарламасы – Біз білім беру үдерісін
+              нақты құрылымға негіздейміз. Курстар оқушылардың деңгейіне қарай
+              жасалған, бұл материалды кезең-кезеңімен меңгеруге мүмкіндік
+              береді.
+            </h3>
+          </div>
+          <div class="erek">
+            <h3>
+              🔹 Қолжетімді (тегін) білім беру – MolecuLab платформасы барлық
+              оқушыларға тегін қолжетімді. Біз білімге тең мүмкіндік беру арқылы
+              әрбір талапкердің арманына бір қадам жақындауына ықпал етеміз.
+            </h3>
+          </div>
+
+          <div class="erek">
+            <h3>
+              🔹 Онлайн және офлайн форматтағы сабақтар – Біз оқыту форматының
+              ыңғайлы болуын басты назарға аламыз. Онлайн сабақтар арқылы кез
+              келген жерде білім алуға мүмкіндік бар, ал офлайн сабақтар
+              оқушылардың қосымша сұрақтарына жауап беруге және практикалық
+              дағдыларын дамытуға көмектеседі.
+            </h3>
+          </div>
+
+          <div class="erek">
+            <h3>
+              🔹 Интерактивті материалдар мен заманауи технологиялар – Оқу
+              процесін қызықты әрі тиімді ету үшін біз бейнесабақтар,
+              интерактивті тесттер, симуляциялар және геймификация элементтерін
+              қолданамыз. Бұл оқушылардың мотивациясын арттырып, білімді
+              тереңірек меңгеруіне көмектеседі.
+            </h3>
+          </div>
+
+          <div class="erek">
+            <h3>
+              🔹 Жеке оқу жоспары және бақылау жүйесі – Біз әрбір оқушының білім
+              деңгейін ескере отырып, жеке оқу жоспарын ұсынамыз. Сонымен қатар,
+              аралық тесттер мен бақылау жұмыстарын өткізу арқылы оқушылардың
+              прогресін қадағалап, олардың әлсіз тұстарын анықтап, қосымша көмек
+              көрсетеміз.
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="containerDIV">
+        <div class="divInform">
+          <h1>
+            <span class="MolecuLab">Неліктен MolecuLab?</span>MolecuLab – бұл
+            жай ғана курс емес, оқушылардың білімін жетілдіруге арналған бірегей
+            платформа. Біз әрбір талапкердің өзіне сенімді болуына, оқу
+            материалдарын терең меңгеруіне және ҰБТ-дан жоғары ұпай жинауына
+            көмектесеміз. Біздің мамандар білім беру процесін оқушыларға барынша
+            ыңғайлы әрі түсінікті етіп ұйымдастырады. Біз білімге шынайы
+            жанашырлықпен қараймыз және әрбір оқушының жетістігіне сенеміз. Егер
+            сіз сапалы білім іздесеңіз, MolecuLab – сіз үшін ең дұрыс таңдау!
+          </h1>
+        </div>
+
+        <div class="divImage">
+          <img
+            src="https://images.pexels.com/photos/8450391/pexels-photo-8450391.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+            alt=""
+          />
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footerInformation">
+        <h1>MolecuLab</h1>
+        <h3>+7 (705) 697 57 26</h3>
+        <h3>+7 (747) 432 57 90</h3>
+        <h3>
+          Алматы, <br />
+          Мауленова көшесі 92 <br />
+          <span class="kunsayun"> күн сайын, 08:00-21:00 </span>
+        </h3>
+      </div>
+
+      <div class="footerInformation">
+        <h1>Курсы</h1>
+        <a href="">Видеосабақтар</a>
+        <a href="">Кітаптар</a>
+        <a href="">Тесттер</a>
+        <a href="">Компания туралы</a>
+      </div>
+
+      <div class="footerInformation">
+        <h1>Әлеуметтік желілеріміз</h1>
+        <div class="social">
+          <a href="https://www.instagram.com/"
+            ><img
+              src="https://i.pinimg.com/736x/30/12/94/30129480e943e5b3e334394168ae16a2.jpg"
+              alt=""
+          /></a>
+          <a href="https://www.tiktok.com/explore"
+            ><img
+              src="https://i.pinimg.com/736x/ce/0e/5d/ce0e5d9271547d9522fc28eff4478a22.jpg"
+              alt=""
+          /></a>
+          <a href="https://web.whatsapp.com/"
+            ><img
+              src="https://i.pinimg.com/736x/bf/8a/76/bf8a76719f900b8757154eb3cfbc844a.jpg"
+              alt=""
+          /></a>
+          <a href="https://ru-ru.facebook.com/"
+            ><img
+              src="https://i.pinimg.com/736x/5b/dc/af/5bdcafabcf6ce12336ebdad44fb1a8ac.jpg"
+              alt=""
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

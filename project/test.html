@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тест</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Delius+Swash+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Cormorant Infant", serif;
+        color: #4c6797;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 40px;
+        padding-right: 40px;
+        background: whitesmoke;
+      }
+      .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+      }
+      .container2 {
+        display: flex;
+        gap: 10px;
+      }
+      .search {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+      }
+      .arrow {
+        width: 30px;
+        height: 30px;
+      }
+      .container1 {
+        display: flex;
+        align-items: center;
+      }
+      .container1 {
+        color: #4c6797;
+      }
+      .lang {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+      }
+      #buttonLg {
+        width: 70px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+      }
+      #lang-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #lang-list li {
+        padding: 10px;
+        cursor: pointer;
+      }
+      #lang-list li:hover {
+        background: #f0f0f0;
+      }
+      .hidden {
+        display: none;
+      }
+      .navHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      .navHeader a {
+        color: #4c6797;
+        text-decoration: none;
+        font-size: 20px;
+        transition: 0.7s;
+      }
+      .navHeader a:hover {
+        text-decoration: underline;
+        scale: 1.1;
+        background: whitesmoke;
+        border-radius: 8px;
+        padding: 7px;
+      }
+      .test {
+        background: whitesmoke;
+        padding: 7px;
+        border-radius: 8px;
+        margin: 3px;
+      }
+      .containerMain1 {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #4c6797;
+        padding: 30px;
+      }
+      .Main1Image {
+        width: 600px;
+        height: 600px;
+        margin: 20px;
+      }
+      .mainCont h2 {
+        font-size: 30px;
+        font-style: italic;
+        margin: 5px;
+        font-weight: 500;
+      }
+      .mainCont h1 {
+        font-size: 80px;
+      }
+      .mainCont h3 {
+        font-size: 30px;
+      }
+      .containerMain2 {
+        margin-top: 70px;
+        padding: 30px;
+        height: 100vh;
+        font-family: "Times New Roman", Times, serif;
+      }
+      .containerMain2 h1 {
+        flex-wrap: wrap;
+        text-align: center;
+        margin: 50px;
+        font-size: 40px;
+      }
+      .containerMain2 h2 {
+        font-size: 35px;
+        font-weight: 100;
+      }
+      .MindettyPander {
+        display: flex;
+        justify-content: space-around;
+      }
+      .MindettyPander h3 {
+        text-align: center;
+        padding: 20px;
+        margin: 20px;
+        border: #4c6797 2px solid;
+        border-radius: 60px;
+        width: 400px;
+        color: #4c6797;
+        transition: 0.5s;
+      }
+      .MindettyPander h3:hover {
+        border: white solid 2px;
+        background: #4c6797;
+        color: white;
+      }
+      .kosymshaPander {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .kosymshaPander h3 {
+        text-align: center;
+        padding: 20px;
+        margin: 20px;
+        border: #4c6797 2px solid;
+        border-radius: 10px;
+        width: 900px;
+        font-size: 30px;
+        color: #4c6797;
+        transition: 0.5s;
+      }
+      .kosymshaPander h3:hover {
+        border: white solid 2px;
+        background: #4c6797;
+        color: white;
+      }
+      .faq-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        font-size: 22px;
+      }
+      .faq-item {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+      }
+      .faq-question {
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .faq-answer {
+        display: none;
+        padding-top: 10px;
+      }
+      .testStart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin-left: 40%;
+        margin-top: -270px;
+        margin-bottom: 50px;
+        background: #4c6797;
+        color: white;
+        width: 300px;
+        font-size: 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.6s;
+      }
+      .testStart:hover {
+        border: #4c6797 2px solid;
+        color: #4c6797;
+        background: white;
+      }
+      .scroll-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #4c6797;
+        color: white;
+        border: white 3px dashed;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+        text-align: center;
+        display: none;
+        transition: 0.5s;
+      }
+      .scroll-button:hover {
+        scale: 1.1;
+      }
+      .scroll-button:focus {
+        background: #033996;
+      }
+      footer {
+        background: #4c6797;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px;
+        color: whitesmoke;
+      }
+      .social {
+        display: flex;
+        flex-direction: row;
+        margin-left: 90px;
+        margin-top: 20px;
+      }
+      .footerInformation a {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: rgb(245, 245, 245);
+        font-size: 25px;
+        padding: 7px;
+        transition: 0.8s;
+      }
+      .footerInformation a:hover {
+        scale: 1.1;
+        color: rgb(229, 229, 229);
+      }
+      .footerInformation h3 {
+        font-size: 25px;
+        padding: 15px;
+      }
+      .footerInformation h1 {
+        font-size: 40px;
+        color: rgb(201, 201, 201);
+      }
+      .kunsayun {
+        font-style: italic;
+        color: rgb(201, 201, 201);
+      }
+      .footerInformation img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container1">
+        <a href="./index.html"
+          ><img class="logo" src="../images/logo.png" alt=""
+        /></a>
+        <h1>MolecuLab</h1>
+      </div>
+
+      <div class="container2">
+        <div class="lang">
+          <button id="buttonLg">
+            <span id="selected-lang">KZ</span>
+            <img class="arrow" src="../images/arrow.png" alt="" />
+          </button>
+          <ul id="lang-list" class="hidden">
+            <li onclick="language('RU')">RU</li>
+            <li onclick="language('KZ')">KZ</li>
+          </ul>
+        </div>
+
+        <img class="search" src="../images/search.png" alt="" />
+      </div>
+    </header>
+
+    <nav class="navHeader">
+      <a href="video.html">Видеосабақтар</a>
+      <a href="book.html">Кітаптар</a>
+      <a class="test" href="test.html">Тесттер</a>
+      <a href="aboutComp.html">Компания туралы</a>
+      <a href="nuska.html">Нұсқа талдау</a>
+    </nav>
+
+    <main>
+      <div class="containerMain1">
+        <div class="mainCont">
+          <h3>MolecuLab</h3>
+          <h1>Тегін ҰБТ<br />Сынақ нұсқасы</h1>
+          <h2>
+            ҰБТға 2025 жылғы жаңартылған <br />
+            сұрақтарымен дайындалыңыз
+          </h2>
+        </div>
+
+        <div>
+          <img
+            class="Main1Image"
+            src="https://cdn.prod.website-files.com/673157ed9d261e99c571606e/673157ed9d261e99c5716119_services-graphic-design-optimized-p-1080.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="containerMain2">
+        <h1>
+          Биология және химия пәндерінен ҰБТ-ға онлайн дайындыққа жауаптары бар
+          ҰБТ/ҰБТ-ның тегін сынақ тестілері
+        </h1>
+        <h2>Міндетті пәндер</h2>
+
+        <div class="MindettyPander">
+          <h3>Математикалық сауаттылығы</h3>
+          <h3>Оқу сауаттылығы</h3>
+          <h3>Қазақстан тарихы</h3>
+        </div>
+
+        <h2>Қосымша 2 пән</h2>
+
+        <div class="kosymshaPander">
+          <h3>Биология - Химия</h3>
+        </div>
+      </div>
+
+      <a class="testStart" href="site.html">Тестті бастау</a>
+
+      <div class="faq-container">
+        <h2>Жиі қойылатын сұрақтар</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">ҰБТ деген не? <span>+</span></div>
+          <div class="faq-answer">
+            ҰБТ (Ұлттық бірыңғай тестілеу) – Қазақстанның жоғары оқу орындарына
+            қабылдау үшін қабылдау емтихандарының нысаны. Бұл болашақ
+            студенттердің білімін тәуелсіз бағалау, субъективті пікірді жоққа
+            шығару және жоғары оқу орнына түсу кезінде барлық қатысушыларды тең
+            ету.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Сынақ нұсқасы дегеніміз не ЕНТ және ол не үшін қажет? <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Сынақ ҰБТ – бұл оқушылардың нақты емтиханға дайындалу мүмкіндігі. Ол
+            тестілеу форматымен танысуға, бейімделу уақытын қысқартуға және
+            нақты емтихан алдындағы қорқынышты азайтуға мүмкіндік береді.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            ҰБТ қалай құрылымдалған? <span>+</span>
+          </div>
+          <div class="faq-answer">
+            ҰБТ екі блокқа бөлінеді:<br />
+            Бірінші блок үш міндетті пәнді қамтиды: математикалық сауаттылық,
+            Қазақстан тарихы және оқу сауаттылығы. Барлығы 40 сұрақ.<br />
+            Екінші блок оқушының таңдауы бойынша әрқайсысы 40 сұрақтан тұратын
+            екі қосымша пәнді қамтиды.<br />
+            Тестілеу уақыты - 210 минут (3 сағат 30 минут).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Жоғары оқу орнына сәтті түсу үшін қанша балл жинау керек?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Ең көбі 140 балл, ең азы – 50 балл жинауға болады. Институтқа сәтті
+            түсу үшін кемінде 60 балл қажет. Нақты сома таңдалған мамандыққа
+            және университеттің ішкі ережелеріне байланысты.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            ҰБТ-ны жылына неше рет тапсыруға болады? <span>+</span>
+          </div>
+          <div class="faq-answer">
+            ҰБТ-ны жылына 5 рет тапсыруға болады:<br />
+            Маусым және шілде айларында институттағы бюджеттік орынға конкурсқа
+            қатысу үшін.<br />
+            Қаңтар, наурыз және тамыз айларында жоғары оқу орнына ақылы негізде
+            түсу үшін.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Сайт арқылы ҰБТ-ға қалай дайындалуға болады MolecuLAB?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            MolecuLAB сайты нақты емтихан нұсқаларына сәйкес келетін химия,
+            биология пәндері бойынша онлайн сынақ тестілеуін ұсынады. Оқушылар
+            өз білімдерін тексеру және нағыз ҰБТ-ға дайындалу үшін бұл тесттерді
+            тегін тапсыра алады. Осы сайттағы жүйелі жаттығулар студенттерге
+            ҰБТ-дан сәтті өтуге және қалаған оқу орнына түсуге көмектеседі.
+          </div>
+        </div>
+      </div>
+    </main>
+    <button id="scrol" class="scroll-button">↑</button>
+
+    <footer>
+      <div class="footerInformation">
+        <h1>MolecuLab</h1>
+        <h3>+7 (705) 697 57 26</h3>
+        <h3>+7 (747) 432 57 90</h3>
+        <h3>
+          Алматы, <br />
+          Мауленова көшесі 92 <br />
+          <span class="kunsayun"> күн сайын, 08:00-21:00 </span>
+        </h3>
+      </div>
+
+      <div class="footerInformation">
+        <h1>Курсы</h1>
+        <a href="">Видеосабақтар</a>
+        <a href="">Кітаптар</a>
+        <a href="">Тесттер</a>
+        <a href="">Компания туралы</a>
+      </div>
+
+      <div class="footerInformation">
+        <h1>Әлеуметтік желілеріміз</h1>
+        <div class="social">
+          <a href="https://www.instagram.com/"
+            ><img
+              src="https://i.pinimg.com/736x/30/12/94/30129480e943e5b3e334394168ae16a2.jpg"
+              alt=""
+          /></a>
+          <a href="https://www.tiktok.com/explore"
+            ><img
+              src="https://i.pinimg.com/736x/ce/0e/5d/ce0e5d9271547d9522fc28eff4478a22.jpg"
+              alt=""
+          /></a>
+          <a href="https://web.whatsapp.com/"
+            ><img
+              src="https://i.pinimg.com/736x/bf/8a/76/bf8a76719f900b8757154eb3cfbc844a.jpg"
+              alt=""
+          /></a>
+          <a href="https://ru-ru.facebook.com/"
+            ><img
+              src="https://i.pinimg.com/736x/5b/dc/af/5bdcafabcf6ce12336ebdad44fb1a8ac.jpg"
+              alt=""
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll(".faq-question").forEach((item) => {
+        item.addEventListener("click", () => {
+          const answer = item.nextElementSibling;
+          const isVisible = answer.style.display === "block";
+          document
+            .querySelectorAll(".faq-answer")
+            .forEach((a) => (a.style.display = "none"));
+          document
+            .querySelectorAll(".faq-question span")
+            .forEach((span) => (span.textContent = "+"));
+          answer.style.display = isVisible ? "none" : "block";
+          item.querySelector("span").textContent = isVisible ? "+" : "-";
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrol = document.getElementById("scrol");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 300) {
+            scrol.style.display = "block";
+          } else {
+            scrol.style.display = "none";
+          }
+        });
+
+        scrol.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

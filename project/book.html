@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кітаптар</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Delius+Swash+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Cormorant Infant", serif;
+        color: #4c6797;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 40px;
+        padding-right: 40px;
+        background: whitesmoke;
+      }
+      .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+      }
+      .container2 {
+        display: flex;
+        gap: 10px;
+      }
+      .search {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+      }
+      .arrow {
+        width: 30px;
+        height: 30px;
+      }
+      .signIn {
+        padding: 10px 15px;
+        background: #4c6797;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 110px;
+        height: 40px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+      }
+      .container1 {
+        display: flex;
+        align-items: center;
+      }
+      .container1 {
+        color: #4c6797;
+      }
+      .lang {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+      }
+      #buttonLg {
+        width: 70px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+      }
+      #lang-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #lang-list li {
+        padding: 10px;
+        cursor: pointer;
+      }
+      #lang-list li:hover {
+        background: #f0f0f0;
+      }
+      .hidden {
+        display: none;
+      }
+      .navHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      .navHeader a {
+        color: #4c6797;
+        text-decoration: none;
+        font-size: 20px;
+        transition: 0.7s;
+      }
+      .navHeader a:hover {
+        text-decoration: underline;
+        scale: 1.1;
+        background: none;
+        border-radius: 8px;
+        padding: 7px;
+      }
+      .book {
+        background: whitesmoke;
+        padding: 7px;
+        border-radius: 8px;
+        margin: 3px;
+      }
+      table {
+        margin: 20px;
+      }
+      table td {
+        border: #4c6797 1px solid;
+        padding: 9px;
+        font-weight: 600;
+        width: 250px;
+      }
+      .biologyy {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        margin: 20px;
+        width: 1100px;
+      }
+      .grey {
+        background: #4c6797;
+        color: white;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: column;
+      }
+      .buttons button {
+        color: white;
+        background: #4c6797;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .buttons button:hover {
+        background: #5c7fbdfd;
+      }
+      aside {
+        width: 700px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 10px;
+        padding-bottom: 50px;
+        height: 600px;
+        margin-right: 30px;
+        padding: 20px;
+        margin-top: 50px;
+      }
+      main {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .MainAside {
+        display: flex;
+        justify-content: space-between;
+      }
+      .searchDiv {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+      }
+
+      #searchInput {
+        padding: 8px;
+        font-size: 16px;
+        border: 2px solid #4c6797;
+        border-radius: 5px;
+        width: 200px;
+        margin-left: 10px;
+        display: none;
+      }
+
+      #searchInput.visible {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container1">
+        <a href="./index.html"
+          ><img class="logo" src="../images/logo.png" alt=""
+        /></a>
+        <h1>MolecuLab</h1>
+      </div>
+
+      <div class="container2">
+        <div class="lang">
+          <button id="buttonLg">
+            <span id="selected-lang">KZ</span>
+            <img class="arrow" src="../images/arrow.png" alt="" />
+          </button>
+          <ul id="lang-list" class="hidden">
+            <li onclick="language('RU')">RU</li>
+            <li onclick="language('KZ')">KZ</li>
+          </ul>
+        </div>
+
+        <div class="searchDiv">
+          <img
+            class="search"
+            src="../images/search.png"
+            alt=""
+            onclick="toggleSearch()"
+          />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Кітап атауын енгізіңіз..."
+            class="hidden"
+            onkeyup="searchBooks()"
+          />
+        </div>
+      </div>
+    </header>
+
+    <nav class="navHeader">
+      <a href="video.html">Видеосабақтар</a>
+      <a class="book" href="book.html">Кітаптар</a>
+      <a href="test.html">Тесттер</a>
+      <a href="aboutComp.html">Компания туралы</a>
+      <a href="nuska.html">Нұсқа талдау</a>
+    </nav>
+
+    <div class="MainAside">
+      <main>
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/246/246.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Биология</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>7 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Көзілдірік Е.А., Құрманғалиева Ж.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылға:</td>
+              <td>2017</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>257</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Биология 7 сынып', '../pdf/grade7Bio.pdf', `https://okulyk.kz/wp-content/books/246/246.jpg`)"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'biology7.pdf')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/502/502.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Биология</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>10 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Очкур Е.А., Курмангалиева Ж., Нуртаева М.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2019</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>265</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Бөлім:</td>
+              <td>2 бөлім</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Биология 10 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/502/502.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'biology10.pdf')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/346/346.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Предмет:</td>
+              <td>Биология</td>
+            </tr>
+            <tr class="white">
+              <td>Класс:</td>
+              <td>8 класс</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторы:</td>
+              <td>Соловьева А., Ибраимова Б.</td>
+            </tr>
+            <tr class="white">
+              <td>Год:</td>
+              <td>2018</td>
+            </tr>
+            <tr class="grey">
+              <td>Страниц:</td>
+              <td>288</td>
+            </tr>
+            <tr class="white">
+              <td>Язык:</td>
+              <td>Русский</td>
+            </tr>
+            <tr class="grey">
+              <td>Издательство:</td>
+              <td>Атамура</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Биология 8 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/346/346.jpg')"
+            >
+              Читать онлайн
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'biology8.pdf')"
+            >
+              Скачать PDF
+            </button>
+          </div>
+        </div>
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/402/402.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Биология</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>9 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Асанов Н., Соловьева А., Ибраимова Б.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2019</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>272</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Баспа:</td>
+              <td>Атамұра</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Биология 9 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/402/402.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'biology8.pdf')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/132/132.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Қазақстан тарихы</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>5 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>
+                Ахметова С., Ибраева А., Құлымбетова А., Мағзұмова А.,
+                Марқабаева А.
+              </td>
+            </tr>
+            <tr class="white">
+              <td>Жылға:</td>
+              <td>2017</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>173</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf(')Қазақстан тарихы 5 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/132/132.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'Қазақстан тарихы')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/250/250.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Қазақстан тарихы</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>7 класс</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Бакина Н., Жанақова Н., Сүлейменова К.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2017</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>240</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Бөлім:</td>
+              <td>2 бөлім</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf(')Қазақстан тарихы 7 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/250/250.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'Қазақстан тарихы')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/1076/1076.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Предмет:</td>
+              <td>Қазақстан тарихы</td>
+            </tr>
+            <tr class="white">
+              <td>Класс:</td>
+              <td>8 класс</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторы:</td>
+              <td>Соловьева А., Ибраимова Б.</td>
+            </tr>
+            <tr class="white">
+              <td>Год:</td>
+              <td>2018</td>
+            </tr>
+            <tr class="grey">
+              <td>Страниц:</td>
+              <td>288</td>
+            </tr>
+            <tr class="white">
+              <td>Язык:</td>
+              <td>Русский</td>
+            </tr>
+            <tr class="grey">
+              <td>Издательство:</td>
+              <td>Атамура</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf(')Қазақстан тарихы 8 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/1076/1076.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'Қазақстан тарихы')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/818/818.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Қазақстан тарихы</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>11 класс</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Кабульдинов З., Сандыбаева А.Д., Лебаев Ф.Р</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2020</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>165</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Баспа:</td>
+              <td>Атамұра</td>
+            </tr>
+          </table>
+          <div class="buttons">
+            <button
+              onclick="openpdf(')Қазақстан тарихы 11  сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/818/818.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button
+              onclick="downloadpdf('../pdf/grade7Bio.pdf', 'Қазақстан тарихы')"
+            >
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/249/249.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Химия</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>7 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Оспанова М.К., Белоусова Т., Аухадиева К.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2018</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>137</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Химия 7 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/249/249.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button onclick="downloadpdf('../pdf/grade7Bio.pdf', 'химия')">
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/506/506.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Химия</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>10 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Очкур Е.А., Курмангалиева Ж., Нуртаева М.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2019</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>265</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Бөлім:</td>
+              <td>2 бөлім</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Химия 10 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/506/506.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button onclick="downloadpdf('../pdf/grade7Bio.pdf', 'химия ')">
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/326/326.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Предмет:</td>
+              <td>Химия</td>
+            </tr>
+            <tr class="white">
+              <td>Класс:</td>
+              <td>8 класс</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторы:</td>
+              <td>Соловьева А., Ибраимова Б.</td>
+            </tr>
+            <tr class="white">
+              <td>Год:</td>
+              <td>2018</td>
+            </tr>
+            <tr class="grey">
+              <td>Страниц:</td>
+              <td>288</td>
+            </tr>
+            <tr class="white">
+              <td>Язык:</td>
+              <td>Русский</td>
+            </tr>
+            <tr class="grey">
+              <td>Издательство:</td>
+              <td>Атамура</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Химия 8 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/326/326.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button onclick="downloadpdf('../pdf/grade7Bio.pdf', 'химия ')">
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+        <div class="biologyy">
+          <img src="https://okulyk.kz/wp-content/books/316/316.jpg" alt="" />
+          <table>
+            <tr class="grey">
+              <td>Пән:</td>
+              <td>Химия</td>
+            </tr>
+            <tr class="white">
+              <td>Сынып:</td>
+              <td>8 сынып</td>
+            </tr>
+            <tr class="grey">
+              <td>Авторлар:</td>
+              <td>Оспанова М.К., Белоусова Т., Аухадиева К.</td>
+            </tr>
+            <tr class="white">
+              <td>Жылы:</td>
+              <td>2018</td>
+            </tr>
+            <tr class="grey">
+              <td>Беттер:</td>
+              <td>217</td>
+            </tr>
+            <tr class="white">
+              <td>Тіл:</td>
+              <td>Қазақша</td>
+            </tr>
+            <tr class="grey">
+              <td>Баспа:</td>
+              <td>Атамұра</td>
+            </tr>
+          </table>
+
+          <div class="buttons">
+            <button
+              onclick="openpdf('Химия 8 сынып', '../pdf/grade7Bio.pdf', 'https://okulyk.kz/wp-content/books/316/316.jpg')"
+            >
+              Онлайн оқу
+            </button>
+            <button onclick="downloadpdf('../pdf/grade7Bio.pdf', 'Химия')">
+              PDF жүктеу
+            </button>
+          </div>
+        </div>
+      </main>
+      <aside>
+        <div id="localbook"></div>
+      </aside>
+    </div>
+    <script>
+      function openpdf(bookName, pdfPath, imgSrc) {
+        window.open(pdfPath, "_blank");
+        localStorage.setItem("localbook", bookName);
+        localStorage.setItem("localbookImg", imgSrc);
+        displaylocalbook();
+      }
+
+      function downloadpdf(pdfPath, fileName) {
+        const link = document.createElement("a");
+        link.href = pdfPath;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function displaylocalbook() {
+        const lastBook = localStorage.getItem("localbook");
+        const lastBookImg = localStorage.getItem("localbookImg");
+        if (lastBook && lastBookImg) {
+          document.getElementById("localbook").innerHTML = `
+                <p style="font-size: 18px; color: #4C6797;">Соңғы оқыған кітап: ${lastBook}</p>
+                <img src="${lastBookImg}" alt="${lastBook}" styl e="width: 150px; border-radius: 10px;">
+            `;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", displaylocalbook);
+
+      function toggleSearch() {
+        let searchInput = document.getElementById("searchInput");
+        searchInput.classList.toggle("visible");
+        searchInput.focus();
+      }
+
+      function searchBooks() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let books = document.querySelectorAll(".biologyy");
+
+        books.forEach((book) => {
+          let bookTitle = book
+            .querySelector("table tr:nth-child(1) td:nth-child(2)")
+            .innerText.toLowerCase();
+
+          if (bookTitle.includes(input)) {
+            book.style.display = "flex";
+          } else {
+            book.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

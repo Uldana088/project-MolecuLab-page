@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MolecuLab</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Delius+Swash+Caps&display=swap" rel="stylesheet">
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Cormorant Infant", serif;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: whitesmoke;
+}
+.logo{
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+}
+.container2{
+    display: flex;
+    gap: 10px;
+}
+.search{
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+}
+.arrow{
+    width: 30px; 
+    height: 30px;
+}
+.signIn{
+    padding: 10px 15px;
+    background: #4C6797;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 110px;
+    height: 40px;   
+    color: white    ;
+    text-align: center;
+    text-decoration: none;  
+    transition: .6s;
+}
+.signIn:hover{
+    color: #4C6797;
+    background: whitesmoke;
+    border: #4C6797 solid 1px;
+}
+.signIn:focus{
+    color: #4C6797;
+    background: whitesmoke;
+    border: #4C6797 solid 1px;
+}
+.container1{
+    display: flex;
+    align-items: center;
+}
+.container1{
+    color: #4C6797;
+
+}
+.lang {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+#buttonLg {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+}
+#lang-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#lang-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+#lang-list li:hover {
+    background: #f0f0f0; 
+}
+.hidden {
+    display: none;
+}
+.navHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.navHeader a{
+    color: #4C6797;
+    text-decoration: none;
+    font-size: 20px;
+    transition: .4s;
+}
+.navHeader a:hover{
+    text-decoration: underline;
+    scale: 1.1xx;
+}
+.mainMoleculab{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    background: url(../images/bg.png) no-repeat center right;
+}
+.mainMoleculab h1{
+    font-size: 60px;
+    color: #4C6797;
+    margin: 30px;       
+    text-shadow: 2px 2px #4c67973e;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: animatiion 1s ease-out forwards;
+}
+@keyframes animatiion {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    
+}
+.card {
+    background:#4C6797;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    margin: 15px;
+    transition: .8s;
+}
+.card img {
+    height: 180px;
+    width: 250px;    
+    border-radius: 10px;
+}
+.card h3 {
+    margin: 10px 0;
+}
+.price {
+    color: green;
+    font-weight: bold;
+}
+.Allcurses{
+    color: #4C6797;
+    text-align: center;
+}
+.myCourses {
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.subject {
+    width: 300px;
+    height: 300px;
+    background: #000;
+    color: #4C6797;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.subject p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-size: 22px;
+}
+.faq-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+.faq-question {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}   
+.faq-answer {
+    display: none;
+    padding-top: 10px;
+}
+.scroll-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #4C6797;
+    color: white;
+    border: white 3px dashed;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center  ;
+    display: none;  
+    transition: .5s;
+}
+.scroll-button:hover{
+    scale: 1.1;
+}
+.scroll-button:focus{
+    background: #033996;
+}
+
+
+
+
+
+footer{
+    background: #4C6797;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    color: whitesmoke;
+   
+
+}
+.social{
+    display: flex;
+    flex-direction: row;
+    margin-left: 90px;
+    margin-top: 20px;
+}
+.footerInformation a{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+    font-size: 25px;
+    padding: 7px;
+    transition: .8s;
+}
+.footerInformation a:hover{
+    scale: 1.1;
+    color: rgb(229, 229, 229);
+}
+.footerInformation h3 {
+    font-size: 25px;
+    padding: 15px;
+}
+.footerInformation h1{
+    font-size: 40px;
+    color: rgb(201, 201, 201);
+}
+.kunsayun{
+    font-style: italic;
+    color: rgb(201, 201, 201);
+}
+.footerInformation img{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="container1">
+            <a href="./index.html"><img class="logo" src="../images/logo.png" alt=""></a>
+            <h1>MolecuLab</h1>
+        </div>
+
+        <div class="container2">
+            <div class="lang">
+                <button id="buttonLg"><span id="selected-lang">KZ</span> <img class="arrow" src="../images/arrow.png" alt=""></button>
+                <ul id="lang-list" class="hidden">  
+                    <li onclick="language('RU')">RU</li>
+                    <li onclick="language('KZ')">KZ</li>
+                </ul>
+            </div>  
+
+            <img  class="search" src="../images/search.png" alt="">
+            <a href="signin.html"class="signIn">Кіру</a>
+
+        </div>
+    </header>
+
+
+    <nav class="navHeader">
+        <a href="video.html">Видеосабақтар</a>
+        <a href="book.html">Кітаптар</a>
+        <a href="test.html">Тесттер</a>
+        <a href="aboutComp.html">Компания туралы</a>
+        <a href="nuska.html">Нұсқа талдау</a>
+    </nav>
+    
+    <main>
+        <div class="mainMoleculab">
+            <h1> MolecuLab: <br> Химия мен биологияны <br> қызықты әрі жеңіл үйрен!</h1>
+        </div>
+
+
+
+        <div class="course">
+            <h1 class="Allcurses"> Барлық курстарымыз</h1>
+    <div class="container">
+        <!-- <div class="card">
+            <img src="https://cdn.culture.ru/images/8002dfd6-41ef-5f44-9659-8f168eda9021" alt="Оқу сауаттылығы">
+            <h3>Оқу сауаттылығы</h3>
+            <p>Бұл курс оқу және мәтіндерді түсіну қабілеттеріңізді жақсартуға көмектеседі. Әртүрлі мәтіндермен жұмыс істеп, логикалық ойлау қабілеттеріңізді дамытасыз.</p>
+        </div> -->
+
+        <div class="card">
+            <img src="https://quiz-plugin.com/wp-content/uploads/2021/02/v-5a4a5a84f133442d992aac72.jpg" alt="Математикалық сауаттылық">
+            <h3>Математикалық сауаттылық</h3>
+            <p>Бұл курс сіздің математикалық есептерді шешу, логикалық ойлау және аналитикалық дағдыларыңызды жетілдіруге көмектеседі.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://avatars.mds.yandex.net/i?id=35898cf8778c678ad5b44b65043860181977e2d8-5235613-images-thumbs&n=13" alt="Қазақстан тарихы">
+            <h3>Қазақстан тарихы</h3>
+            <p>Қазақстанның бай тарихымен танысып, маңызды оқиғалар мен тарихи тұлғалар туралы көбірек білесіз. Өткеннен сабақ алып, болашаққа бағдар жасаңыз.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://www.hse.ru/data/2021/05/21/1434580962/iStock-1209831767.jpg" alt="Биология">
+            <h3>Биология</h3>
+            <p>Табиғаттағы тіршілік әлемін зерттеп, биологиялық процестер мен организмдердің құрылысын түсінесіз. Бұл курс сізге жан-жақты білім береді.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://avatars.mds.yandex.net/i?id=2fa8e77ad94154895192bf597b1660cd_l-4406655-images-thumbs&n=13" alt= "Химия">
+            <h3>Химия</h3>
+            <p>Химиялық реакциялар, элементтердің қасиеттері мен заттардың құрылысын тереңірек зерттеңіз. Ғылыми тәжірибелер арқылы білім алыңыз.</p>
+        </div>
+
+    </main>
+
+    <div class="faq-container">
+        <h2>Жиі қойылатын сұрақтар</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Видеосабақ не үшін керек?  <span>+</span></div>
+            <div class="faq-answer">Видеосабақ - оқушының өз ыңғайлы уақытында көре алатын ең негізгі теориялардың түсіндірмесі. Сапалы видеоматериалдар арқылы оқушылар сол аптада өтетін барлық тақырыптарға шолу жасай алады.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Курсты аяқтағаннан кейін қалай дайындаламын? <span>+</span></div>
+            <div class="faq-answer">Қайталауға қалу үшін бізде 3-4 пәнді толық оқып бітіру керек. Іріктеу арқылы оқушыларды ҰБТ-ға дейін дайындап, мамандық таңдауға көмектесіп, грантқа дейін жандарында боламыз. Қайталауда үш түрлі пакет болады: вип, премиум, стандарт.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Базаны қалай жаттайды? <span>+</span></div>
+            <div class="faq-answer">Біздің курста арнайы мамандармен дайындалған, авторлық құқықпен қорғалған база беріледі. Оқулық негізінде дайындалған түпнұсқа материалдар болғандықтан, алдымен оқулықты түсініп оқимыз.</div>
+        </div>
+    </div>
+</div>
+
+<button id="scrol" class="scroll-button">↑</button>
+
+    <footer>
+        <div class="footerInformation"> 
+            <h1>MolecuLab</h1>
+            <h3>+7 (705) 697 57 26</h3>
+            <h3>+7 (747) 432 57 90</h3>
+            <h3>Алматы, <br> Мауленова көшесі 92 <br> <span class="kunsayun"> күн сайын, 08:00-21:00 </span></h3>
+        </div>
+
+        <div class="footerInformation">
+            <h1>Курсы</h1>
+            <a href="">Видеосабақтар</a>
+            <a href="">Кітаптар</a>
+            <a href="">Тесттер</a>
+            <a href="">Компания туралы</a>
+
+        </div>
+
+        <div class="footerInformation">
+            <h1>Әлеуметтік желілеріміз</h1>
+            <div class="social">
+            <a href="https://www.instagram.com/"><img src="https://i.pinimg.com/736x/30/12/94/30129480e943e5b3e334394168ae16a2.jpg" alt=""></a>
+            <a href="https://www.tiktok.com/explore"><img src="https://i.pinimg.com/736x/ce/0e/5d/ce0e5d9271547d9522fc28eff4478a22.jpg" alt=""></a>
+            <a href="https://web.whatsapp.com/"><img src="https://i.pinimg.com/736x/bf/8a/76/bf8a76719f900b8757154eb3cfbc844a.jpg" alt=""></a>
+            <a href="https://ru-ru.facebook.com/"><img src="https://i.pinimg.com/736x/5b/dc/af/5bdcafabcf6ce12336ebdad44fb1a8ac.jpg" alt=""></a>
+        </div>
+        </div>
+    </footer>
+    <script>
+    document.getElementById('buttonLg').addEventListener('click', function() {
+    document.getElementById('lang-list').classList.toggle('hidden');
+});
+
+function language(lang) {
+    document.getElementById('selected-lang').innerText = lang;
+    document.getElementById('lang-list').classList.add('hidden');
+}
+
+
+document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        const isVisible = answer.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        document.querySelectorAll('.faq-question span').forEach(span => span.textContent = '+');
+        answer.style.display = isVisible ? 'none' : 'block';
+        item.querySelector('span').textContent = isVisible ? '+' : '-';
+    })
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    const scrol = document.getElementById("scrol")
+  
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        scrol.style.display = "block";
+      } else {
+        scrol.style.display = "none";
+      }
+    });
+  
+    scrol.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    })
+  });
+  
+    </script>
+</body>
+</html>

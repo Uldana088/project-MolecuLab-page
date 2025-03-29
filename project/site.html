@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тест</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Times New Roman", Times, serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background: #0832b0;
+        padding: 20px;
+        height: 40px;
+      }
+      .left {
+        display: flex;
+        align-items: center;
+      }
+      .left h3 {
+        padding: 0 20px;
+      }
+      .menu {
+        width: 70px;
+        height: 70px;
+      }
+      .finish {
+        background: white;
+        height: 20px;
+        border: red solid 1px;
+        color: red;
+        border-radius: 6px;
+        padding: 10px;
+        margin-left: 10px;
+        text-decoration: none;
+      }
+      .Previous {
+        background: white;
+        border: #0832b0 solid 1px;
+        height: 20px;
+        color: #0832b0;
+        border-radius: 6px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+      .Previous img {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+      }
+      nav {
+        height: 100vh;
+        background: rgb(58, 58, 255);
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        gap: 5px;
+      }
+
+      .table {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background-color: white;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        z-index: 1000;
+      }
+      .tablImg {
+        width: 700px;
+        height: 700px;
+        margin: 50px;
+      }
+
+      .closeBtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .conatinerLeft {
+        text-align: center;
+        cursor: pointer;
+      }
+      .logo {
+        width: 30px;
+        height: 30px;
+      }
+      .conatinerLeft h5 {
+        color: white;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .question-container {
+        flex: 1;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .navigation button {
+        background: #0155c4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        height: 40px;
+        box-shadow: 0px 4px 8px rgba(7, 39, 225, 0.826);
+      }
+      .timer-container {
+        border-radius: 10px;
+        width: 120px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 4px 8px rgba(7, 39, 225, 0.826);
+      }
+      #time {
+        color: #0832b0;
+        text-align: center;
+      }
+      .answers label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      #bolimDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -50%;
+        width: 50%;
+        height: 100%;
+        background-color: white;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        z-index: 1000;
+        transition: right 0.3s ease-in-out;
+      }
+      .bolim {
+        list-style: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .bolim li {
+        margin: 10px 0;
+      }
+      .bolim a {
+        text-decoration: none;
+        color: #0832b0;
+        font-size: 18px;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      .bolim a:hover {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="left">
+        <img class="menu" src="../images/menu.png" alt="" />
+        <h3>Абдиомар Улдана Арманқызы</h3>
+        <a href="index.html" class="finish">Тестілеуді аяқтау </a>
+      </div>
+      <div>
+        <div class="Previous">
+          <img src="../images/arrow_back.png" alt="" />
+          <h4>Алдынгы пән</h4>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <nav>
+        <div class="conatinerLeft">
+          <img class="logo" src="../images/person.png" alt="" />
+          <h5>Uldana</h5>
+        </div>
+
+        <div class="conatinerLeft" id="openSections">
+          <img class="logo" src="../images/sections.png" alt="" />
+          <h5>Бөлімдер</h5>
+        </div>
+
+        <div id="bolimDiv">
+          <span class="closeBtn" onclick="closeSidebar('bolimDiv')"
+            >&times;</span
+          >
+          <h2>Бөлімдер</h2>
+          <ul class="bolim">
+            <li><a href="oku_sauattylygy.html">Оқу сауаттылығы</a></li>
+            <li>
+              <a href="math_sauattylygy.html">Математикалық сауаттылығы</a>
+            </li>
+            <li><a href="kaz_tarihy.html">Қазақстан тарихы</a></li>
+            <li><a href="himiya.html">Химия</a></li>
+            <li><a href="biologiya.html">Биология</a></li>
+          </ul>
+        </div>
+
+        <div class="conatinerLeft">
+          <img class="logo" src="../images/map.png" alt="" />
+          <h5>Жауап картасы</h5>
+        </div>
+
+        <div class="conatinerLeft">
+          <img class="logo" src="../images/calculate.png" alt="" />
+          <h5>Калкулятор</h5>
+        </div>
+
+        <div class="conatinerLeft" id="openMendeleev">
+          <img class="logo" src="../images/table.png" alt="" />
+          <h5>Менделеев таблицасы</h5>
+        </div>
+
+        <div class="conatinerLeft" id="openSolubility">
+          <img class="logo" src="../images/table.png" alt="" />
+          <h5>Ерігіштік кестесі</h5>
+        </div>
+
+        <div id="mendeleevtable" class="table">
+          <span class="closeBtn" onclick="closetable('mendeleevtable')"
+            >&times;</span
+          >
+          <h2>Менделеев таблицасы</h2>
+          <img
+            src="https://cdn1.ozone.ru/s3/multimedia-1-r/c600/6968343807.jpg"
+            alt=""
+            class="tablImg"
+          />
+        </div>
+
+        <div id="solubilitytable" class="table">
+          <span class="closeBtn" onclick="closetable('solubilitytable')"
+            >&times;</span
+          >
+          <h2>Ерігіштік кестесі</h2>
+          <img
+            src="https://avatars.mds.yandex.net/i?id=77a47e3c8bb86964b284a77aecf76cd6_l-4312678-images-thumbs&ref=rim&n=13&w=899&h=732"
+            alt=""
+            class="tablImg"
+          />
+        </div>
+      </nav>
+
+      <main>
+        <div class="question-container">
+          <div class="navigation">
+            <button>Алдыңғы сұрақ</button>
+            <div class="timer-container">
+              <h1 id="time">30:00</h1>
+            </div>
+            <button onclick="nextQuestion()">Келесі сұрақ</button>
+          </div>
+        </div>
+      </main>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let mendeleevtable = document.getElementById("mendeleevtable");
+          let solubilitytable = document.getElementById("solubilitytable");
+          let bolimDiv = document.getElementById("bolimDiv");
+
+          function update(seconds) {
+            let hours = Math.floor(seconds / 3600);
+            let minutes = Math.floor((seconds % 3600) / 60);
+            let secs = seconds % 60;
+            timeElement.textContent = `${String(hours).padStart(
+              2,
+              "0"
+            )}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(
+              2,
+              "0"
+            )}`;
+          }
+
+          function startCountdown() {
+            let interval = setInterval(function () {
+              if (totalTime <= 0) {
+                clearInterval(interval);
+                timeElement.textContent = "0:00";
+                alert("аяқталды");
+              } else {
+                totalTime--;
+                update(totalTime);
+              }
+              0;
+            }, 1000);
+          }
+
+          update(totalTime);
+          startCountdown();
+
+          function opentable(id) {
+            let table = document.getElementById(id);
+            table.style.display = "block";
+            setTimeout(() => {
+              table.style.right = "0";
+            }, 10);
+          }
+
+          function closetable(id) {
+            let table = document.getElementById(id);
+            table.style.right = "-50%";
+            setTimeout(() => {
+              table.style.display = "none";
+            }, 300);
+          }
+
+          document.getElementById("openMendeleev").onclick = function (event) {
+            event.stopPropagation();
+            opentable("mendeleevtable");
+          };
+
+          document.getElementById("openSolubility").onclick = function (event) {
+            event.stopPropagation();
+            opentable("solubilitytable");
+          };
+
+          function openSidebar(id) {
+            let sidebar = document.getElementById(id);
+            sidebar.style.display = "block";
+            setTimeout(() => {
+              sidebar.style.right = "0";
+            }, 10);
+          }
+
+          function closeSidebar(id) {
+            let sidebar = document.getElementById(id);
+            sidebar.style.right = "-50%";
+            setTimeout(() => {
+              sidebar.style.display = "none";
+            }, 300);
+          }
+
+          document.getElementById("openSections").onclick = function (event) {
+            event.stopPropagation();
+            openSidebar("bolimDiv");
+          };
+
+          mendeleevtable.onclick =
+            solubilitytable.onclick =
+            bolimDiv.onclick =
+              function (event) {
+                event.stopPropagation();
+              };
+
+          window.onclick = function (event) {
+            if (
+              mendeleevtable.style.display === "block" &&
+              !mendeleevtable.contains(event.target)
+            ) {
+              closetable("mendeleevtable");
+            }
+            if (
+              solubilitytable.style.display === "block" &&
+              !solubilitytable.contains(event.target)
+            ) {
+              closetable("solubilitytable");
+            }
+            if (
+              bolimDiv.style.display === "block" &&
+              !bolimDiv.contains(event.target)
+            ) {
+              closeSidebar("bolimDiv");
+            }
+          };
+
+          window.closetable = closetable;
+          window.closeSidebar = closeSidebar;
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          let questions = [
+            {
+              question: "Генетикалық ақпарат қай молекула арқылы беріледі?",
+              options: ["Липидтер", "ДНҚ", "Белоктар", "Көмірсулар"],
+              answer: "ДНҚ",
+            },
+            {
+              question:
+                "Биосферадағы зат және энергия айналымы қандай факторлардың әсерінен жүреді?",
+              options: [
+                "Биотикалық және абиотикалық",
+                "Тек биотикалық",
+                "Тек абиотикалық",
+                "Антропогендік",
+              ],
+              answer: "Биотикалық және абиотикалық",
+            },
+            {
+              question: "Клеткадағы энергия көзі қай органоидта түзіледі?",
+              options: ["Ядро", "Лизосома", "Рибосома", "Митохондрия"],
+              answer: "Митохондрия",
+            },
+            {
+              question: "Фотосинтез процесінде оттегі қандай заттан бөлінеді?",
+              options: ["Көмірқышқыл газы", "Су", "Глюкоза", "Хлорофилл"],
+              answer: "Су",
+            },
+            {
+              question: "Қай зат тұқым қуалаушылыққа жауапты?",
+              options: ["Глюкоза", "ДНҚ", "АТФ", "Көмірқышқыл газы"],
+              answer: "ДНҚ",
+            },
+            {
+              question:
+                "Белгілі бір белгілердің тұқым қуалауы қай заңдылыққа негізделген?",
+              options: [
+                "Дарвин теориясы",
+                "Мендель заңдары",
+                "Ламарк теориясы",
+                "Экология",
+              ],
+              answer: "Мендель заңдары",
+            },
+            {
+              question: "Ақуыздардың құрылымдық бірлігі қандай?",
+              options: [
+                "Аминқышқылдар",
+                "Нуклеотидтер",
+                "Моноқанттар",
+                "Липидтер",
+              ],
+              answer: "Аминқышқылдар",
+            },
+            {
+              question: "Көмірсулардың негізгі қызметі қандай?",
+              options: [
+                "Құрылыстық",
+                "Энергетикалық",
+                "Каталитикалық",
+                "Тасымалдаушы",
+              ],
+              answer: "Энергетикалық",
+            },
+            {
+              question:
+                "Өсімдіктердің артық көмірсуын қандай зат түрінде сақтайды?",
+              options: ["Глюкоза", "Крахмал", "Целлюлоза", "Гликоген"],
+              answer: "Крахмал",
+            },
+            {
+              question: "ДНҚ молекуласындағы азоттық негіздер қандай?",
+              options: [
+                "Аденин, тимин, гуанин, цитозин",
+                "Аденин, урацил, гуанин, цитозин",
+                "Тек аденин және тимин",
+                "Тек гуанин және цитозин",
+              ],
+              answer: "Аденин, тимин, гуанин, цитозин",
+            },
+          ];
+
+          let currentQuestionIndex = 0;
+          let selectedAnswers = {};
+          let totalScore = 0;
+          let timerElement = document.getElementById("time");
+          let totalTime = 30 * 60;
+          let questionContainer = document.querySelector(".question-container");
+
+          function loadQuestion(index) {
+            let q = questions[index];
+            questionContainer.innerHTML = `
+            <div class='navigation'>
+                <button onclick='prevQuestion()'>Алдыңғы</button>
+                <div class='timer-container'><h1 id='time'>${formatTime(
+                  totalTime
+                )}</h1></div>
+                <button onclick='nextQuestion()'>Келесі</button>
+            </div>
+            <h2>${q.question}</h2>
+            <div class='answers'>
+                ${q.options
+                  .map(
+                    (option, i) => `
+                    <label>
+                        <input type='radio' name='answer' value='${i}' ${
+                      selectedAnswers[index] == i ? "checked" : ""
+                    }>
+                        ${option}
+                    </label>
+                `
+                  )
+                  .join("")}
+            </div>
+        `;
+          }
+
+          function formatTime(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return `${String(minutes).padStart(
+              2,
+              "0"
+            )}:${String(secs).padStart(2, "0")}`;
+          }
+
+          function startTimer() {
+            let interval = setInterval(() => {
+              if (totalTime <= 0) {
+                clearInterval(interval);
+                alert("Тест аяқталды!");
+                calculateScore();
+              } else {
+                totalTime--;
+                timerElement.textContent = formatTime(totalTime);
+              }
+            }, 1000);
+          }
+
+          function nextQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex < questions.length - 1) {
+              currentQuestionIndex++;
+              loadQuestion(currentQuestionIndex);
+            } else {
+              calculateScore();
+            }
+          }
+
+          function prevQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex > 0) {
+              currentQuestionIndex--;
+              loadQuestion(currentQuestionIndex);
+            }
+          }
+
+          function saveAnswer() {
+            let selectedOption = document.querySelector(
+              "input[name='answer']:checked"
+            );
+            if (selectedOption) {
+              selectedAnswers[currentQuestionIndex] = parseInt(
+                selectedOption.value
+              );
+            }
+          }
+
+          function calculateScore() {
+            totalScore = 0;
+            questions.forEach((q, index) => {
+              if (
+                selectedAnswers[index] !== undefined &&
+                q.options[selectedAnswers[index]] === q.answer
+              ) {
+                totalScore++;
+              }
+            });
+            alert(`Сіздің нәтижеңіз: ${totalScore} / ${questions.length}`);
+          }
+
+          loadQuestion(currentQuestionIndex);
+          startTimer();
+
+          loadQuestion(currentQuestionIndex);
+          startTimer();
+
+          window.nextQuestion = nextQuestion;
+          window.prevQuestion = prevQuestion;
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          let totalTime = 30 * 60;
+          let timerElement = document.getElementById("time");
+
+          function formatTime(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return `${String(minutes).padStart(
+              2,
+              "0"
+            )}:${String(secs).padStart(2, "0")}`;
+          }
+
+          function startTimer() {
+            timerElement.textContent = formatTime(totalTime);
+            let interval = setInterval(() => {
+              if (totalTime <= 0) {
+                clearInterval(interval);
+                alert("Тест аяқталды!");
+              } else {
+                totalTime--;
+                timerElement.textContent = formatTime(totalTime);
+              }
+            }, 1000);
+          }
+
+          startTimer();
+        });
+
+        function opentable(id) {
+          let table = document.getElementById(id);
+          table.style.display = "block";
+        }
+
+        function closetable(id) {
+          let table = document.getElementById(id);
+          table.style.display = "none";
+        }
+
+        document.getElementById("openMendeleev").onclick = function (event) {
+          event.stopPropagation();
+          opentable("mendeleevtable");
+        };
+        document.getElementById("openSolubility").onclick = function (event) {
+          event.stopPropagation();
+          opentable("solubilitytable");
+        };
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Видео сабақтар</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Delius+Swash+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Cormorant Infant", serif;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 40px;
+        padding-right: 40px;
+        background: whitesmoke;
+      }
+      .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+      }
+      .container2 {
+        display: flex;
+        gap: 10px;
+      }
+      .search {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+      }
+      .arrow {
+        width: 30px;
+        height: 30px;
+      }
+      .signIn {
+        padding: 10px 15px;
+        background: #4c6797;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 110px;
+        height: 40px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+      }
+      .container1 {
+        display: flex;
+        align-items: center;
+      }
+      .container1 {
+        color: #4c6797;
+      }
+      .lang {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+      }
+      #buttonLg {
+        width: 70px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+      }
+      #lang-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #lang-list li {
+        padding: 10px;
+        cursor: pointer;
+      }
+      #lang-list li:hover {
+        background: #f0f0f0;
+      }
+      .hidden {
+        display: none;
+      }
+      .navHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      .navHeader a {
+        color: #4c6797;
+        text-decoration: none;
+        font-size: 20px;
+        transition: 0.7s;
+      }
+      .navHeader a:hover {
+        text-decoration: underline;
+        scale: 1.1;
+        background: whitesmoke;
+        border-radius: 8px;
+        padding: 7px;
+      }
+      .video {
+        background: whitesmoke;
+        padding: 7px;
+        border-radius: 8px;
+        margin: 3px;
+      }
+      .video-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        transition: 0.5s;
+      }
+      .video:hover {
+        scale: 1.1;
+      }
+      #video-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .video-imagee {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+      }
+      .watch-button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background: #4c6797;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      .watch-button:hover {
+        background: #36527c;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container1">
+        <a href="./index.html"
+          ><img class="logo" src="../images/logo.png" alt=""
+        /></a>
+        <h1>MolecuLab</h1>
+      </div>
+
+      <div class="container2">
+        <div class="lang">
+          <button id="buttonLg">
+            <span id="selected-lang">KZ</span>
+            <img class="arrow" src="../images/arrow.png" alt="" />
+          </button>
+          <ul id="lang-list" class="hidden">
+            <li onclick="language('RU')">RU</li>
+            <li onclick="language('KZ')">KZ</li>
+          </ul>
+        </div>
+
+        <img class="search" src="../images/search.png" alt="" />
+      </div>
+    </header>
+
+    <nav class="navHeader">
+      <a class="video" href="video.html">Видеосабақтар</a>
+      <a href="book.html">Кітаптар</a>
+      <a href="test.html">Тесттер</a>
+      <a href="aboutComp.html">Компания туралы</a>
+      <a href="nuska.html">Нұсқа талдау</a>
+    </nav>
+    <main>
+      <div id="video-container"></div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("videos.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const videoContainer = document.getElementById("video-container");
+
+            data.forEach((video) => {
+              const videoCard = document.createElement("div");
+              videoCard.classList.add("video-card");
+
+              videoCard.innerHTML = `
+                    <img src="${video.imagee}" alt="${video.title}" class="video-imagee">
+                    <h3>${video.title}</h3>
+                    <p>${video.description}</p>
+                    <a href="${video.videoUrl}" target="_blank" class="watch-button">Көру</a>
+                `;
+
+              videoContainer.appendChild(videoCard);
+            });
+          })
+          .catch((error) => console.error("Катее", error));
+      });
+    </script>
+  </body>
+</html>
